@@ -1,0 +1,205 @@
+ТЫ — ОПЫТНЫЙ FRONTEND-РАЗРАБОТЧИК (Senior Vue.js/Nuxt.js Developer) И ВЕБ-ДИЗАЙНЕР.
+Твоя задача — сгенерировать код современного, красивого, стильного и минималистичного ЧЕРНО-БЕЛОГО (grayscale) веб-сайта на Nuxt.js.
+
+**ОСНОВНЫЕ ТРЕБОВАНИЯ К ПРОЕКТУ:**
+1.  **Цветовая гамма:** Только черный, белый и все оттенки серого (grayscale). Никаких цветных элементов, кроме, возможно, иконок социальных сетей (если они цветные по умолчанию, но их можно сделать серыми или инвертировать при наведении).
+2.  **Стиль:** Эстетичный, минималистичный, с большим количеством "воздуха" (отступов), современной типографикой (используй системные шрифты или подключи Google Fonts на выбор, например, 'Inter' или 'Montserrat').
+3.  **Стек:** Nuxt.js (Version 3), Vue.js, композиционный API (script setup).
+4.  **Структура:** Сайт должен быть одностраничным (SPA) с якорными ссылками.
+
+**СТРУКТУРА САЙТА (Секции):**
+
+1.  **Хедер (Header):**
+    *   Логотип (можно просто текст "СТУДИЯ DILIA" или текстовый логотип).
+    *   Навигационное меню (ГЛАВНАЯ, ПРАЙС, О НАС). Пункты меню должны плавно скроллить до соответствующих секций.
+    *   Дизайн должен быть строгим, черно-белым.
+
+2.  **Главный экран (Hero Section / Offer):**
+    *   Заголовок: "СТУДИЯ МАНИКЮРА, ПАРИКМАХЕРСКАЯ".
+    *   Подзаголовок: "Первое посещение со скидкой 10% для новых клиентов".
+    *   Три черно-белые фотографии (можно использовать те, что указаны в исходном коде, или любые стоковые изображения по теме бьюти-услуг). Размести их в одну линию, как в примере.
+
+3.  **Прайс-лист (Price Section):**
+    *   **Слайдер (Карусель).** ОБЯЗАТЕЛЬНОЕ УСЛОВИЕ: в слайдере листаются ТРИ ИЗОБРАЖЕНИЯ, которые имитируют листы прайса в альбомной ориентации (горизонтальный А4).
+    *   Слайдер должен поддерживать свайп на мобильных устройствах и иметь стрелки для навигации.
+    *   Данные для изображений: используй SVG-плейсхолдеры или пути к изображениям, как в исходном коде (`./images/price/A4 - 1.svg`, и т.д.). Можно создать три простых серых прямоугольника с текстом "Прайс-лист 1" и т.д., если нет реальных картинок.
+
+4.  **Блок Записи (Form/CTA Section):**
+    *   Крупная кнопка "ЗАПИСАТЬСЯ".
+    *   При клике на кнопку должен открываться в НОВОЙ ВКЛАДКЕ сайт онлайн-записи (система YCLIENTS).
+    *   Ссылка для перехода: `https://n1432105.yclients.com/company/1296264/personal/menu?o=`
+
+5.  **Блок "О нас" (About Section):**
+    *   Заголовок "О НАС".
+    *   Текст: "Всем привет! На связи студия DILIA! Наша миссия заключается в том, чтобы подчеркнуть все волшебное, что у Вас есть. Из нашей студии Вы уйдёте с радостью и уверенностью в том, что Вы готовы воплощать все свои задумки и идеи!"
+    *   **Карта:** Встроить виджет Яндекс.Карт с новым адресом. Код конструктора карты предоставлен ниже.
+    *   Текст с адресом: "г. Москва, Ул Академика Волгина д 2"
+    *   **Социальные сети и контакты:**
+        *   Иконка Telegram: ссылка на `https://t.me/diliacom`
+        *   Иконка Телефон: ссылка на `tel:+79771515943`
+        *   Иконка WhatsApp: ссылка на `https://api.whatsapp.com/send/?phone=79361598890&text=Добрый%20день!%20Хочу%20записаться%20к%20вам%20в%20салон`
+
+6.  **Футер (Footer):**
+    *   Название студии: "BEAUTY STUDIO DILIA"
+    *   Телефон: "+7 (977) 151-59-43"
+    *   Адрес: "г. Москва, Ул Академика Волгина д 2"
+    *   Дизайн в одну строку или колонку, строгий, черно-белый.
+
+**ИСХОДНЫЙ КОД ДЛЯ АДАПТАЦИИ И ДАННЫЕ:**
+Вот старый HTML-код, на основе которого нужно сделать новый стильный проект. Возьми оттуда тексты, ссылки и логику слайдера на React, но перепиши её под Vue/Nuxt.
+
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Салон красоты DILIA</title>
+    <link rel="icon" href="./icons/logo.png">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+<header class="header">
+        <nav class="nav">
+            <div class="header-ul">
+                <a href="#home">ГЛАВНАЯ</a>
+                <a href="#price">ПРАЙС</a>
+                <a href="#about">О НАС</a>
+            </div>
+            <div class="txt-header">
+                <h1 class="title">САЛОН КРАСОТЫ</h1>
+                <h1 class="title-gl">“DILIA”</h1>
+            </div>
+        </nav>
+</header>
+
+<section class="offer">
+    <div class="container">
+        <div class="offer-images">
+            <div class="offer-text">
+                <p>Первое посещение со скидкой<br> 10% для новых клиентов</p>
+            </div>
+            <div class="offer-img">
+                <img src="./images/1.png" alt="">
+                <img class="srimg" src="./images/2.png" alt="">
+                <img src="./images/3.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="price">
+    <div class="container colors-price">
+        <div id="root"></div>
+
+        <script type="text/babel">
+            const { useState, useRef } = React;
+
+function Slider() {
+  const images = [
+    "./images/price/A4 - 1.svg",
+    "./images/price/A4 - 2.svg",
+    "./images/price/A4 - 3.svg"
+  ];
+  const [index, setIndex] = useState(0);
+  const startX = useRef(null);
+
+  const next = () => setIndex((prev) => (prev + 1) % images.length);
+  const prev = () => setIndex((prev) => (prev - 1 + images.length) % images.length);
+
+  // Свайп для мобильных
+  const onTouchStart = (e) => {
+    startX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e) => {
+    if (startX.current === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX.current - endX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? next() : prev();
+    }
+    startX.current = null;
+  };
+
+  return (
+    <div
+      className="slider"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
+      <div
+        className="slides"
+        style={{ transform: `translateX(-${index * 100}%)` }}
+      >
+        {images.map((src, i) => (
+          <div className="slide" key={i}>
+            <img src={src} alt={`slide-${i}`} />
+          </div>
+        ))}
+      </div>
+
+      <button className="btn btn-left" onClick={prev}>&lt;</button>
+      <button className="btn btn-right" onClick={next}>&gt;</button>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Slider />);
+
+        </script>
+    </div>
+</section>
+
+
+<section class="form">
+    <div class="forms">
+        <img class="form-img" src="./images/form.png" alt="">
+        <div class="btn-form">
+            <a href="https://n1432105.yclients.com/company/1296264/personal/menu?o="><p>ЗАПИСАТЬСЯ</p></a>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="about-us-txt">О НАС</h2>
+        <p class="about-us-txt">Всем привет! На связи салон DILIA!<br>
+        Наша миссия заключается в том, чтобы подчеркнуть все волшебное, что у Вас есть.</p>
+
+        <p class="about-us-txt">Из нашего салона красоты Вы уйдёте с радостью и уверенностью в том, что Вы готовы воплощать все свои задумки и идеи!</p>
+        <div class="map">
+            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A0c91bcaaaf6c505d893043010ce92e09fdc4aa55c3085253b42c0563a3ce006c&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=true"></script>
+        </div>
+        <p class="address">г. Москва, ул. Введенского, д. 5</p>
+        <div class="btn-about-us">
+            <a href="https://t.me/diliacom">
+                <img src="./icons/btn/tg.svg" alt="">
+            </a>
+            <a href="tel:+79771515943">
+                <img src="./icons/btn/ph.svg" alt="">
+            </a>
+            <a href="https://api.whatsapp.com/send/?phone=79361598890&text=Добрый%20день!%20Хочу%20записаться%20к%20вам%20в%20салон
+">
+                <img src="./icons/btn/wh.svg" alt="">
+            </a>
+        </div>        
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-icons">
+        <img src="./icons/footer_icons.svg" alt="">
+    </div>
+    <div class="footer-container container">
+        <p>BEAUTY SALON “DILIA”</p>
+        <p>+7 (977) 151-59-43</p>
+        <p>г. Москва, ул. Введенского, д.5</p>
+    </div>
+</footer>
+
+</body>
+</html>
